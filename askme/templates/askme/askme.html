@@ -1,0 +1,17 @@
+{% extends "personal/index.html" %}
+
+{% block main %}
+<center>
+    <h3>Ask me</h3>
+</center>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="form-actions">
+        <center>
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </center>
+      <!--<button type="submit" >Send</button>-->
+    </div>
+</form>
+{% endblock %}
