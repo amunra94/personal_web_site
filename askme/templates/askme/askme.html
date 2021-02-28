@@ -4,14 +4,42 @@
 <center>
     <h3>Ask me</h3>
 </center>
+<br>
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <div class="form-actions">
-        <center>
-            <button type="submit" class="btn btn-primary">Отправить</button>
-        </center>
-      <!--<button type="submit" >Send</button>-->
+    {{ form.non_field_errors }}
+    <div class="container">
+        <div class="col">
+            <center>
+                <div class="fieldWrapper col-8">
+                    {{ form.subject.errors }}
+                    <label for="id_subject">Email subject:</label>
+                    <textarea class="form-control" id="id_subject" name="subject" rows="1" cols="10"></textarea>
+                </div>
+                <div class="fieldWrapper col-8">
+                    <br>
+                    {{ form.email.errors }}
+                    <center><label for="id_email">Your email address:</label>
+                        <textarea class="form-control" id="id_email" name="email" rows="1" cols="2"></textarea>
+                    </center>
+                </div>
+                <div class="col-8">
+                    <br>
+                    {{ form.message.errors }}
+                    <center><label for="id_message">Your message:</label>
+                        <textarea class="form-control" id="id_message" name="message" rows="5" cols="2"></textarea>
+                    </center>
+                </div>
+                <p>
+                <center>
+                    <button type="submit" class="btn btn-primary mx-sm-2 mb-2">Send</button>
+                </center>
+                </p>
+                {% if sended %}
+                <label for="id_message">Thanks! Your message was sent! </label>
+                {% endif %}
+            </center>
+        </div>
     </div>
 </form>
 {% endblock %}

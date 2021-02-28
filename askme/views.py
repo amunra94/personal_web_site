@@ -4,7 +4,13 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from .forms import ContactForm
 
+
 def emailView(request):
+    sended = False
+    message_client = "Thanks for your question! I will try to answer in near time.\n\n\n" \
+                     "Rudnitskiy Andrey"
+    admin_email = 'mail@arudnitskiy.ru'
+
     if request.method == 'GET':
         form = ContactForm()
     else:
@@ -13,14 +19,18 @@ def emailView(request):
             subject = form.cleaned_data['subject']
             from_email = form.cleaned_data['email']
             message = form.cleaned_data['message']
-            from_email = 'a89605330004@yandex.ru'
+            message = 'From email: ' + from_email + '\n' + message
+            recipients = ['andre.rudnitskii@yandex.ru']
             try:
-                send_mail(subject, message, from_email, ['andre.rudnitskii@yandex.ru'])
+                send_mail(subject, message, admin_email, recipient_list=recipients)
+                sended = True
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return redirect('success')
-    return render(request, "askme/askme.html", {'form': form})
+            try:
+                send_mail(subject, message_client, admin_email, recipient_list=[from_email])
+            except:
+                return HttpResponse('Invalid header found.')
 
-def successView(request):
-    # return HttpResponse('Success! Thank you for your message.')
-    return render(request, "askme/success.html")
+            render(request, "askme/askme.html", {'form': form, 'sended': sended})
+
+    return render(request, "askme/askme.html", {'form': form, 'sended': sended})

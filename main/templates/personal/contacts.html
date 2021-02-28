@@ -1,0 +1,65 @@
+{% extends "personal/index.html" %}
+
+{% block main %}
+
+<center><h3>Contact</h3></center>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <p2>
+                <br>
+                <strong><span style="font-size:18px;">Rudnitskiy.Inc</span></strong>
+                <br>
+                <br>
+                Moscow, Russia
+                <br>
+                <br>
+                Tel: +7 (977)-269-67-05 <br>
+                <a href="mailto:{{ email }}">Email: {{ email }}</a>
+            </p2>
+        </div>
+        <div class="col-8" id="map-canvas"
+             style="width:400px;height:500px;">
+        </div>
+    </div>
+</div>
+<script>
+
+function initMap() {
+  var myLatlng = new google.maps.LatLng(55.870833,37.490336);
+  var mapOptions = {
+    zoom: 6,
+    center: myLatlng
+  }
+
+  var usRoadMapType = new google.maps.StyledMapType([{"stylers":[{"saturation":-100},{"gamma":1}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"labels.text","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.place_of_worship","elementType":"labels.text","stylers":[{"visibility":"off"}]},{"featureType":"poi.place_of_worship","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"water","stylers":[{"visibility":"on"},{"saturation":50},{"gamma":0},{"hue":"#50a5d1"}]},{"featureType":"administrative.neighborhood","elementType":"labels.text.fill","stylers":[{"color":"#333333"}]},{"featureType":"road.local","elementType":"labels.text","stylers":[{"weight":0.5},{"color":"#333333"}]},{"featureType":"transit.station","elementType":"labels.icon","stylers":[{"gamma":1},{"saturation":50}]}], {name: 'US Road Atlas'});
+
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      title:"Rudnitskiy",
+      animation: google.maps.Animation.DROP,
+      icon: "/static/img/marker.png"
+  });
+
+  var map = new google.maps.Map(document.getElementById('map-canvas'), {
+    zoom: 12,
+    center: {lat: 55.870388, lng: 37.490336},
+    mapTypeControlOptions: {
+      mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'usroadatlas']
+    }
+  });
+
+  marker.setMap(map);
+
+  map.mapTypes.set('usroadatlas', usRoadMapType);
+  map.setMapTypeId('usroadatlas');
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwy61PvZ52sOF61fl71x4QycgJ_8xQq94&callback=initMap"
+        async defer></script>
+<div class="col-xs-12" style="height:250px; margin-bottom:250px;"></div>
+{% endblock %}
+
+

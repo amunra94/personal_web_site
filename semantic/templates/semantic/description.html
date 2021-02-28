@@ -2,32 +2,31 @@
 
 {% block semantic_main %}
 
- <h4>Прогнозирование настроения киноотзыва</h4>
-            <h4>Описание задачи:</h4>
-            <p> Данная задача заключалась в тренировке модели на отзывах о кинофильмах из набора IMDB.
-                Данный набор содержит 25.000 отрицательных отзывов, и 25.000 положительных на английском языке.
-            </p>
-            <div class="line"></div>
+<h4>Prediction the mood of the movie review.</h4>
+<br>
+<h5>Description task:</h5>
+<p2> Dataset of IMDB with 50.000 movie reviews on English: 25.000 - negative and 25.000 - positive.<br>
+    Need to fit model to predict of mood review.
+</p2>
 
-            <h4>Реализация задачи:</h4>
-            <p>
-                В качестве предварительной обработки данных был использован степпер.
-            </p>
+<div class="line"></div>
 
-            <div class="line"></div>
-
-            <!--<h2>Lorem Ipsum Dolor</h2>-->
-            <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
-
-            <!--<div class="line"></div>-->
-
-            <!--<h2>Lorem Ipsum Dolor</h2>-->
-            <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
-
-            <!--<div class="line"></div>-->
-
-            <!--<h3>Lorem Ipsum Dolor</h3>-->
-            <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
-            <a href="review/" class="btn btn-primary " role="button" aria-pressed="true">Добавить новый отзыв</a>
+<h5>How have i done it?</h5>
+<p2>
+    <strong>Preparing:</strong><br>
+    I've cleared data from of frequent word like (and,or..) and special symbols.<br>
+    I have used NLTK library for downloading English stop-words.<br>
+    In this task I used bag-of-word technique to convert words to numbers
+    and tf-idf method to normalize weight of some words.<br>
+    <br>
+    <strong>Analysis:</strong><br>
+    I've taken SGDClassifier with LogRegression as a model for training with one sample.<br>
+    For finding good parameter I used GridSearch method with different parameters (StemmerPorter, Snowball) <br>
+    In the end I embedded this model in my personal site. Jus click the button below and test model.
+    <br>
+    Accuracy of this model: 90%.
+</p2>
+<div class="line"></div>
+<a href="review/" class="btn btn-primary " role="button" aria-pressed="true">Test model</a>
 
 {% endblock %}

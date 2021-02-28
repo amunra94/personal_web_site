@@ -1,0 +1,91 @@
+{% extends "personal/index.html" %}
+
+{% block main %}
+<center>
+    <h3>About</h3>
+</center>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <img src="/static/img/profile.jpeg" width="200px" height="250px">
+        </div>
+        <div class="col-8">
+            <table class="table table-bordered">
+                <thead>
+                <tr></tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">BIO</th>
+                    <td>Rudnitskiy Andrey,<br>
+                        16 May 1994<br>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Education</th>
+                    <td><a class="link" href="https://miet.ru/">Moscow Institute of Electronic Technology </a>,<br>
+                        Baschelor's degree 2016,<br>
+                        Master's degree 2018
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Experience</th>
+                    <td>
+                        <a href="http://www.niime.ru/en/" class="link">JSC Molecular Electronics Research Institute</a>,<br>
+                        data scientist and software developer,<br>
+                        2 years
+			<br>
+			Samsung Research Center, data scientist <br>
+		        1 year
+                    </td>
+
+                </tr>
+                <tr>
+                    <th scope="row">Projects</th>
+                    <td>
+                        - Analysis of time series of power microelectronic devices to check safety,<br>
+                        - Developing different tools for data analysis (with Kmeans, MLP, CNN),<br>
+                        - Creating web-projects with Django (landing pages, personal sites),<br>
+                        - Creating chat-bots in Telegram,<br>
+			- Forecasting sell-out in Samsung products in Russia(boosting,lstm network)<br>
+			- Segmentation clients on groups<br>
+                        - Training on different tasks from machine learning area(ф		
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Hobbies</th>
+                    <td>
+                        - Sports(football, basketball, hockey),<br>
+                        - Reading books,<br>
+                        - Coding
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Languages</th>
+                    <td>
+                        - Englsih: intermediate,<br>
+                        - Russian: advanced
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col">
+        </div>
+        <div class="w-100"></div>
+        <br>
+        <div class="col">
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col">
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
